@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jett Winkler Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&display=swap">
+<style>
+/* Trade Gothic LT Std is a licensed font. It is used if it is installed on the viewer's computer,
+   or if you upload your licensed file to fonts/ in the repo (see the url() lines). Otherwise the
+   page falls back to Barlow Condensed, the face your team portfolios use for headings. */
+@font-face {
+  font-family: "Trade Gothic LT Std";
+  src: local("Trade Gothic LT Std"), local("TradeGothicLTStd"), local("TradeGothicLTStd-Regular"),
+       url("fonts/TradeGothicLTStd.woff2") format("woff2"),
+       url("fonts/TradeGothicLTStd.otf") format("opentype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+
+/* Layout: Iron Lions print style on the web. White page, light-gray outer panels with black
+   borders, white or yellow boxes nested inside them, dark-gray panels for emphasis, yellow rules. */
+:root {
+  --page: #ffffff;
+  --panel: #d6d6d6;
+  --panel-dark: #666666;
+  --tag: #a6a6a6;
+  --ink: #111111;
+  --ink-soft: #444444;
+  --on-dark: #ffffff;
+  --yellow: #f0bf26;
+  --line: #111111;
+  --ph: #ececec;
+  --font-body: "Trade Gothic LT Std", "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  --font-head: "Barlow Condensed", "Trade Gothic LT Std", "Arial Narrow", Arial, sans-serif;
+  --wrap: 1040px;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--page); color: var(--ink);
+  font-family: var(--font-body); font-size: 1.125rem; line-height: 1.55;
+}
+.wrap { max-width: var(--wrap); margin: 0 auto; padding-inline: 18px; }
+h1, h2, h3, h4, h5 { font-family: var(--font-head); line-height: 1.05; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+a { color: var(--ink); text-decoration-color: var(--yellow); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+a:hover { background: var(--yellow); }
+a:focus-visible, summary:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+.placeholder { color: var(--ink-soft); font-style: italic; }
+.panel-dark .placeholder { color: #e4e4e4; }
+
+/* Running header, like the top of every team portfolio page */
+.runhead { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--page); }
+.runhead .wrap { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 22px; padding-block: 10px 8px; border-bottom: 3px solid var(--yellow); }
+.runhead .title { font-family: var(--font-head); font-weight: 400; font-size: 1.1rem; margin-right: auto; }
+.runhead nav { display: flex; gap: 18px; }
+.runhead nav a { font-family: var(--font-head); font-weight: 600; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.04em; text-decoration: none; padding: 1px 4px; }
+
+/* Cover: big name, then a dimension-line style subtitle */
+.cover { padding-block: 64px 24px; display: grid; gap: 14px; }
+.cover h1 { font-weight: 800; text-transform: uppercase; font-size: clamp(3rem, 11vw, 7rem); letter-spacing: 0.01em; line-height: 0.95; }
+.cover-line { display: flex; align-items: center; gap: 14px; font-family: var(--font-head); font-weight: 300; text-transform: uppercase; font-size: clamp(1.2rem, 3.4vw, 2rem); letter-spacing: 0.04em; }
+.cover-line span { flex: none; }
+.cover-line span:nth-child(3) { color: var(--yellow); font-weight: 700; }
+.cover-line i { flex: 1 1 20px; height: 0; border-top: 3px solid var(--panel-dark); }
+.cover-sub { font-family: var(--font-head); font-size: 1.1rem; border-top: 4px solid var(--yellow); padding-top: 10px; }
+
+/* Chapter title: boxed title between double yellow rules */
+.chapter { padding-block: 48px 8px; display: grid; gap: 36px; }
+.chapter-title { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 18px; }
+.chapter-title::before, .chapter-title::after { content: ""; height: 16px; background: linear-gradient(var(--panel-dark), var(--panel-dark)) center / 100% 3px no-repeat; }
+.chapter-title::before { border-left: 3px solid var(--panel-dark); }
+.chapter-title::after { border-right: 3px solid var(--panel-dark); }
+.chapter-title h2 {
+  font-weight: 800; text-transform: uppercase; font-size: clamp(1.9rem, 5vw, 2.8rem);
+  padding-bottom: 4px; border-bottom: 4px solid var(--yellow);
+}
+
+/* Outer panel with a header row: TITLE ——— byline */
+.panel { background: var(--panel); border: 1.5px solid var(--line); }
+.panel-head { display: flex; align-items: center; gap: 14px; padding: 14px clamp(16px, 3vw, 26px); border-bottom: 1.5px solid var(--line); flex-wrap: wrap; }
+.panel-head h3 { font-weight: 800; text-transform: uppercase; font-size: clamp(1.5rem, 3.4vw, 2rem); }
+.panel-head .rule { flex: 1 1 60px; height: 0; border-top: 1.5px solid var(--line); min-width: 40px; }
+.panel-head .byline { font-family: var(--font-head); font-size: 1rem; }
+.panel-body { padding: clamp(16px, 3vw, 28px); display: grid; gap: 22px; }
+
+/* Inner box with title bar (boxes in boxes) */
+.box { background: var(--page); border: 1.5px solid var(--line); min-width: 0; }
+.box-head { border-bottom: 1.5px solid var(--line); padding: 6px 14px; text-align: center; font-family: var(--font-head); font-weight: 400; text-transform: uppercase; font-size: 1.35rem; }
+.box-body { padding: 14px 16px; display: grid; gap: 14px; }
+.box.yellow { background: var(--yellow); }
+.box.gray { background: var(--panel); }
+
+/* Dark panel with an overlapping tag, like "Creative and innovative elements" */
+.panel-dark { background: var(--panel-dark); color: var(--on-dark); position: relative; margin-top: 26px; padding: 52px clamp(16px, 3vw, 28px) 26px; }
+.panel-dark .tag-box { position: absolute; top: -26px; left: clamp(12px, 3vw, 22px); background: var(--page); border: 1.5px solid var(--line); padding: 5px; }
+.panel-dark .tag-box span { display: block; background: var(--page); border: 1.5px solid var(--line); border-radius: 6px; padding: 4px 12px; font-family: var(--font-head); text-transform: uppercase; font-size: 1.25rem; color: var(--ink); }
+.panel-dark a { color: var(--on-dark); }
+.panel-dark a:hover { color: var(--ink); }
+
+/* Gray label tags */
+.tag { display: inline-block; justify-self: start; background: var(--tag); color: var(--ink); font-family: var(--font-head); font-weight: 700; font-size: 0.95rem; padding: 3px 10px; text-transform: uppercase; letter-spacing: 0.03em; }
+.tag.yellow { background: var(--yellow); }
+
+/* Images: rounded frames; if the file is missing, the frame shows its filename */
+.ph { margin: 0; position: relative; background: var(--ph); border-radius: 18px; overflow: hidden; aspect-ratio: 4 / 3; max-width: 100%; }
+.ph img { display: block; width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 1; color: transparent; }
+.ph.missing img { display: none; }
+/* The filename sits behind the image, so it only shows until a real photo loads over it */
+.ph .ph-label {
+  display: grid; place-items: center; position: absolute; inset: 0; padding: 10px; text-align: center;
+  font-family: var(--font-head); font-size: 0.95rem; color: var(--ink-soft); word-break: break-all;
+  border: 1.5px dashed #9a9a9a; border-radius: 18px;
+}
+.ph.card { aspect-ratio: 5 / 7; border-radius: 12px; }
+.ph.card .ph-label { border-radius: 12px; }
+/* Yellow mat around a photo */
+.mat { background: var(--yellow); border: 1.5px solid var(--line); padding: 14px; }
+
+.trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 600px) { .trio { grid-template-columns: 1fr; } }
+
+/* Ceramics */
+.ceramics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.ceramics .trio { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.ceramics .ph { border-radius: 10px; aspect-ratio: 1; }
+.ceramics .ph .ph-label { border-radius: 10px; font-size: 0.8rem; }
+@media (max-width: 760px) { .ceramics { grid-template-columns: 1fr; } }
+
+/* Meals */
+.meal { display: grid; gap: 18px; }
+.stages { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.stage { display: grid; grid-template-columns: minmax(0, 210px) minmax(0, 1fr); gap: 18px; align-items: center; background: var(--page); border: 1.5px solid var(--line); padding: 12px; }
+.stage .ph { border-radius: 12px; }
+.stage .ph .ph-label { border-radius: 12px; }
+.stage h5 { font-weight: 700; font-size: 1.2rem; text-transform: uppercase; margin-bottom: 4px; }
+@media (max-width: 600px) { .stage { grid-template-columns: 1fr; } }
+
+/* 2D cards */
+.cards { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
+.cards figure { margin: 0; display: grid; gap: 8px; align-content: start; background: var(--page); border: 1.5px solid var(--line); padding: 8px; }
+.cards figcaption { font-size: 0.95rem; line-height: 1.4; }
+@media (max-width: 900px) { .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Placeholder note */
+.ph-note { font-style: normal; font-weight: 700; color: var(--ink); }
+.panel-dark .ph-note { color: var(--on-dark); }
+
+/* Research */
+.q-label { font-weight: 800; letter-spacing: 0.02em; }
+.question { background: var(--yellow); border: 1.5px solid var(--line); padding: 16px 20px; font-family: var(--font-head); font-weight: 600; font-size: clamp(1.2rem, 2.6vw, 1.55rem); line-height: 1.25; }
+
+/* Dropdown styled as a box with a title bar */
+details { background: var(--page); border: 1.5px solid var(--line); }
+summary { cursor: pointer; list-style: none; padding: 8px 14px; font-family: var(--font-head); font-weight: 600; text-transform: uppercase; font-size: 1.15rem; display: flex; align-items: center; gap: 10px; background: var(--yellow); }
+summary::-webkit-details-marker { display: none; }
+summary::before { content: ""; width: 0; height: 0; border-left: 8px solid var(--ink); border-block: 6px solid transparent; transition: transform .15s ease; }
+details[open] summary { border-bottom: 1.5px solid var(--line); }
+details[open] summary::before { transform: rotate(90deg); }
+details .inner { padding: 14px 16px; }
+@media (prefers-reduced-motion: reduce) { summary::before { transition: none; } }
+
+/* Link lists */
+.linkgroups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 640px) { .linkgroups { grid-template-columns: 1fr; } }
+.linkgroups ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.linkgroups li { display: flex; align-items: baseline; gap: 8px; padding: 7px 0; border-bottom: 1px dotted var(--ink-soft); }
+.linkgroups li:last-child { border-bottom: 0; }
+.linkgroups li::before { content: ""; width: 7px; height: 7px; background: var(--yellow); border: 1px solid var(--line); flex: none; transform: translateY(-1px); }
+.soon { color: var(--ink-soft); }
+
+/* Contact box (yellow, like "Core questions") */
+.contact .box-body { text-align: center; }
+.contact .who { font-family: var(--font-head); font-weight: 600; }
+
+.notice { justify-self: start; border: 1.5px solid var(--line); background: var(--page); padding: 6px 14px; font-family: var(--font-head); font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; display: inline-flex; gap: 10px; align-items: center; }
+.notice::before { content: ""; width: 10px; height: 10px; background: var(--yellow); border: 1.5px solid var(--line); }
+
+/* Video */
+.video { aspect-ratio: 16 / 9; max-width: 100%; background: var(--ph); border-radius: 18px; overflow: hidden; border: 1.5px solid var(--line); }
+.video iframe { width: 100%; height: 100%; border: 0; display: block; }
+.video .ph-label { display: grid; place-items: center; height: 100%; font-family: var(--font-head); color: var(--ink-soft); text-align: center; padding: 16px; }
+
+.btn { justify-self: start; display: inline-block; background: var(--ink); color: var(--page); border: 1.5px solid var(--ink); padding: 7px 16px; font-family: var(--font-head); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; text-decoration: none; }
+.btn:hover { background: var(--yellow); color: var(--ink); }
+.panel-dark .btn { background: var(--yellow); color: var(--ink); border-color: var(--yellow); }
+.panel-dark .btn:hover { background: var(--page); }
+
+/* Robots */
+.robots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.robot .box-body { gap: 12px; }
+@media (max-width: 700px) { .robots { grid-template-columns: 1fr; } }
+
+.split { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 22px; align-items: start; }
+@media (max-width: 760px) { .split { grid-template-columns: 1fr; } }
+
+footer { margin-top: 56px; }
+footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; font-family: var(--font-head); }
+</style>
+</head>
+<body>
+
+<header class="runhead">
+  <div class="wrap">
+    <span class="title">Jett Winkler · Engineering and Arts Portfolio</span>
+    <nav aria-label="Sections"><a href="#art">Art</a><a href="#engineering">Engineering</a></nav>
+  </div>
+</header>
+
+<main>
+  <section class="cover wrap">
+    <h1>Jett Winkler</h1>
+    <div class="cover-line"><span>Engineering</span><i></i><span>&amp;</span><i></i><span>Arts</span></div>
+    <p class="cover-sub">Portfolio · <a href="mailto:Jett@wyomingwinklers.com">Jett@wyomingwinklers.com</a></p>
+  </section>
+
+  <!-- ===================== ART ===================== -->
+  <section class="chapter wrap" id="art">
+    <div class="chapter-title"><h2>Art</h2></div>
+
+    <!-- CERAMICS -->
+    <section class="panel" id="ceramics">
+      <div class="panel-head"><h3>Recent Sets</h3><span class="rule"></span><span class="byline">Ceramics</span></div>
+      <div class="panel-body ceramics">
+
+        <article class="box">
+          <div class="box-head">Ceramics piece 1 title</div>
+          <div class="box-body">
+            <div class="trio">
+              <figure class="ph"><img src="images/ceramics-1a.jpg" alt="Ceramics piece 1, view 1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/ceramics-1a.jpg</figcaption></figure>
+              <figure class="ph"><img src="images/ceramics-1b.jpg" alt="Ceramics piece 1, view 2" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/ceramics-1b.jpg</figcaption></figure>
+              <figure class="ph"><img src="images/ceramics-1c.jpg" alt="Ceramics piece 1, view 3" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/ceramics-1c.jpg</figcaption></figure>
+            </div>
+            <p class="placeholder"><span class="ph-note">[50 words about this piece]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</p>
+          </div>
+        </article>
+
+        <article class="box">
+          <div class="box-head">Ceramics piece 2 title</div>
+          <div class="box-body">
+            <div class="trio">
+              <figure class="ph"><img src="images/ceramics-2a.jpg" alt="Ceramics piece 2, view 1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/ceramics-2a.jpg</figcaption></figure>
+              <figure class="ph"><img src="images/ceramics-2b.jpg" alt="Ceramics piece 2, view 2" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/ceramics-2b.jpg</figcaption></figure>
+              <figure class="ph"><img src="images/ceramics-2c.jpg" alt="Ceramics piece 2, view 3" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/ceramics-2c.jpg</figcaption></figure>
+            </div>
+            <p class="placeholder"><span class="ph-note">[50 words about this piece]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</p>
+          </div>
+        </article>
+
+        <article class="box">
+          <div class="box-head">Ceramics piece 3 title</div>
+          <div class="box-body">
+            <div class="trio">
+              <figure class="ph"><img src="images/ceramics-3a.jpg" alt="Ceramics piece 3, view 1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/ceramics-3a.jpg</figcaption></figure>
+              <figure class="ph"><img src="images/ceramics-3b.jpg" alt="Ceramics piece 3, view 2" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/ceramics-3b.jpg</figcaption></figure>
+              <figure class="ph"><img src="images/ceramics-3c.jpg" alt="Ceramics piece 3, view 3" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/ceramics-3c.jpg</figcaption></figure>
+            </div>
+            <p class="placeholder"><span class="ph-note">[50 words about this piece]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</p>
+          </div>
+        </article>
+
+        <article class="box">
+          <div class="box-head">Ceramics piece 4 title</div>
+          <div class="box-body">
+            <div class="trio">
+              <figure class="ph"><img src="images/ceramics-4a.jpg" alt="Ceramics piece 4, view 1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/ceramics-4a.jpg</figcaption></figure>
+              <figure class="ph"><img src="images/ceramics-4b.jpg" alt="Ceramics piece 4, view 2" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/ceramics-4b.jpg</figcaption></figure>
+              <figure class="ph"><img src="images/ceramics-4c.jpg" alt="Ceramics piece 4, view 3" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/ceramics-4c.jpg</figcaption></figure>
+            </div>
+            <p class="placeholder"><span class="ph-note">[50 words about this piece]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- MEAL 1 -->
+    <section class="panel" id="meal-1">
+      <div class="panel-head"><h3>Meal 1 title</h3><span class="rule"></span><span class="byline">Culinary art</span></div>
+      <div class="panel-body meal">
+        <div class="box"><div class="box-head">The dish</div><div class="box-body">
+          <p class="placeholder"><span class="ph-note">[75 words about the dish]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet consectetur.</p>
+        </div></div>
+        <ol class="stages">
+          <li class="stage"><figure class="ph"><img src="images/meal-1-1.jpg" alt="Meal 1, stage 1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/meal-1-1.jpg</figcaption></figure>
+            <div><span class="tag yellow">Stage 1</span><h5>Stage title</h5><p class="placeholder"><span class="ph-note">[25 words about this stage]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis.</p></div></li>
+          <li class="stage"><figure class="ph"><img src="images/meal-1-2.jpg" alt="Meal 1, stage 2" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/meal-1-2.jpg</figcaption></figure>
+            <div><span class="tag yellow">Stage 2</span><h5>Stage title</h5><p class="placeholder"><span class="ph-note">[25 words about this stage]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis.</p></div></li>
+          <li class="stage"><figure class="ph"><img src="images/meal-1-3.jpg" alt="Meal 1, stage 3" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/meal-1-3.jpg</figcaption></figure>
+            <div><span class="tag yellow">Stage 3</span><h5>Stage title</h5><p class="placeholder"><span class="ph-note">[25 words about this stage]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis.</p></div></li>
+          <li class="stage"><figure class="ph"><img src="images/meal-1-4.jpg" alt="Meal 1, stage 4" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/meal-1-4.jpg</figcaption></figure>
+            <div><span class="tag yellow">Stage 4</span><h5>Stage title</h5><p class="placeholder"><span class="ph-note">[25 words about this stage]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis.</p></div></li>
+          <li class="stage"><figure class="ph"><img src="images/meal-1-5.jpg" alt="Meal 1, stage 5" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/meal-1-5.jpg</figcaption></figure>
+            <div><span class="tag yellow">Stage 5</span><h5>Stage title</h5><p class="placeholder"><span class="ph-note">[25 words about this stage]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- MEAL 2 -->
+    <section class="panel" id="meal-2">
+      <div class="panel-head"><h3>Meal 2 title</h3><span class="rule"></span><span class="byline">Culinary art</span></div>
+      <div class="panel-body meal">
+        <div class="box"><div class="box-head">The dish</div><div class="box-body">
+          <p class="placeholder"><span class="ph-note">[75 words about the dish]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet consectetur.</p>
+        </div></div>
+        <ol class="stages">
+          <li class="stage"><figure class="ph"><img src="images/meal-2-1.jpg" alt="Meal 2, stage 1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/meal-2-1.jpg</figcaption></figure>
+            <div><span class="tag yellow">Stage 1</span><h5>Stage title</h5><p class="placeholder"><span class="ph-note">[25 words about this stage]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis.</p></div></li>
+          <li class="stage"><figure class="ph"><img src="images/meal-2-2.jpg" alt="Meal 2, stage 2" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/meal-2-2.jpg</figcaption></figure>
+            <div><span class="tag yellow">Stage 2</span><h5>Stage title</h5><p class="placeholder"><span class="ph-note">[25 words about this stage]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis.</p></div></li>
+          <li class="stage"><figure class="ph"><img src="images/meal-2-3.jpg" alt="Meal 2, stage 3" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/meal-2-3.jpg</figcaption></figure>
+            <div><span class="tag yellow">Stage 3</span><h5>Stage title</h5><p class="placeholder"><span class="ph-note">[25 words about this stage]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis.</p></div></li>
+          <li class="stage"><figure class="ph"><img src="images/meal-2-4.jpg" alt="Meal 2, stage 4" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/meal-2-4.jpg</figcaption></figure>
+            <div><span class="tag yellow">Stage 4</span><h5>Stage title</h5><p class="placeholder"><span class="ph-note">[25 words about this stage]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis.</p></div></li>
+          <li class="stage"><figure class="ph"><img src="images/meal-2-5.jpg" alt="Meal 2, stage 5" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/meal-2-5.jpg</figcaption></figure>
+            <div><span class="tag yellow">Stage 5</span><h5>Stage title</h5><p class="placeholder"><span class="ph-note">[25 words about this stage]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 2D ART -->
+    <section class="panel" id="two-d">
+      <div class="panel-head"><h3>2D art piece title</h3><span class="rule"></span><span class="byline">2D art</span></div>
+      <div class="panel-body">
+        <div class="box"><div class="box-head">About the piece</div><div class="box-body">
+          <p class="placeholder"><span class="ph-note">[75 words about the piece]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet consectetur.</p>
+        </div></div>
+        <div class="cards">
+          <figure><div class="ph card"><img src="images/2d-1.jpg" alt="2D art detail 1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="ph-label">images/2d-1.jpg</span></div><figcaption class="placeholder"><span class="ph-note">[15-word caption]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.</figcaption></figure>
+          <figure><div class="ph card"><img src="images/2d-2.jpg" alt="2D art detail 2" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="ph-label">images/2d-2.jpg</span></div><figcaption class="placeholder"><span class="ph-note">[15-word caption]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.</figcaption></figure>
+          <figure><div class="ph card"><img src="images/2d-3.jpg" alt="2D art detail 3" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="ph-label">images/2d-3.jpg</span></div><figcaption class="placeholder"><span class="ph-note">[15-word caption]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.</figcaption></figure>
+          <figure><div class="ph card"><img src="images/2d-4.jpg" alt="2D art detail 4" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="ph-label">images/2d-4.jpg</span></div><figcaption class="placeholder"><span class="ph-note">[15-word caption]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.</figcaption></figure>
+          <figure><div class="ph card"><img src="images/2d-5.jpg" alt="2D art detail 5" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="ph-label">images/2d-5.jpg</span></div><figcaption class="placeholder"><span class="ph-note">[15-word caption]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- ===================== ENGINEERING ===================== -->
+  <section class="chapter wrap" id="engineering">
+    <div class="chapter-title"><h2>Engineering</h2></div>
+
+    <!-- RESEARCH -->
+    <section class="panel" id="research">
+      <div class="panel-head"><h3>Advanced Research</h3><span class="rule"></span><span class="byline">Computer Science and Mathematics</span></div>
+      <div class="panel-body">
+        <p class="question"><strong class="q-label">RESEARCH QUESTION:</strong> How can the use of complex gearing systems—such as continuous variable transmission, centrifugal continuously variable transmission, and derailleur gearing—financially optimize differential swerve drive for autonomous robotic applications?</p>
+        <div class="box"><div class="box-head">The study</div><div class="box-body">
+          <p>I am running a simulation study of a differential swerve drive module that replaces one of its two motors with a continuously variable transmission. A standard differential swerve pod needs two motors because both of the things it has to control — wheel speed and steering rate — are linear combinations of the two input shaft speeds. My claim is that one motor plus a variable ratio can span that same output space, which would cut the actuator count of a holonomic drive base roughly in half and take most of the cost with it. The work itself is a MATLAB modeling and simulation study: I build kinematic and power models of four chassis variants — baseline differential swerve, servo-controlled CVT, single-speed-band centrifugal CVT, and multi-speed-band centrifugal CVT — run all four through the same path-following benchmark, and compare them on achievable velocity set, energy per meter, and bill-of-materials cost. The deliverable is the comparison and the model, not a robot. If the simulation holds up and there is time left over, the plan extends into building one physical pod and checking the model against it.</p>
+        </div></div>
+        <details>
+          <summary>Click here for more info</summary>
+          <div class="inner">
+            <p class="placeholder"><span class="ph-note">[100 words of additional research detail]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- FUSION LIBRARY -->
+    <section class="panel" id="fusion-library">
+      <div class="panel-head"><h3>goBILDA FTC Fusion Parts Library</h3><span class="rule"></span><span class="byline">CAD resource</span></div>
+      <div class="panel-body">
+        <div class="split">
+          <div class="box"><div class="box-head">About the library</div><div class="box-body">
+            <p class="placeholder"><span class="ph-note">[75 words about the library]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet consectetur.</p>
+          </div></div>
+          <div class="box yellow contact"><div class="box-head">Get involved</div><div class="box-body">
+            <p>If you want to assist in development or maintenance, or have questions and suggestions, reach out.</p>
+            <p class="who">Jett Winkler<br>FTC Team 19922 Iron Lions<br><a href="mailto:Jett@wyomingwinklers.com">Jett@wyomingwinklers.com</a></p>
+          </div></div>
+        </div>
+        <div class="linkgroups">
+          <div class="box"><div class="box-head">Fusion libraries</div><div class="box-body">
+            <ul>
+              <li><a href="#" data-todo="link">Unsorted SKU parts library</a></li>
+              <li><a href="#" data-todo="link">Sorted and named parts library</a></li>
+              <li class="soon">Sorted, named, and post-processed library (COMING SOON)</li>
+            </ul>
+          </div></div>
+          <div class="box"><div class="box-head">Base downloads</div><div class="box-body">
+            <ul>
+              <li><a href="#" data-todo="link">Unsorted SKU Parts Library.zip</a></li>
+              <li><a href="#" data-todo="link">Sorted and named parts library.zip</a></li>
+            </ul>
+          </div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COAXIAL SWERVE -->
+    <section class="panel" id="coaxial-swerve">
+      <div class="panel-head"><h3>FTC Compatible Coaxial Swerve Drive</h3><span class="rule"></span><span class="byline">Open source design</span></div>
+      <div class="panel-body">
+        <!-- YOUTUBE: replace VIDEO_ID below with the ID from your video's link (the part after watch?v=) -->
+        <div class="video" data-youtube="VIDEO_ID"><div class="ph-label">YouTube video goes here. Set data-youtube to the video ID.</div></div>
+        <div class="trio">
+          <figure class="ph"><img src="images/swerve-1.jpg" alt="Coaxial swerve module, image 1" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/swerve-1.jpg</figcaption></figure>
+          <figure class="ph"><img src="images/swerve-2.jpg" alt="Coaxial swerve module, image 2" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/swerve-2.jpg</figcaption></figure>
+          <figure class="ph"><img src="images/swerve-3.jpg" alt="Coaxial swerve module, image 3" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/swerve-3.jpg</figcaption></figure>
+        </div>
+        <div class="panel-dark">
+          <div class="tag-box"><span>About the module</span></div>
+          <div style="display:grid;gap:18px">
+            <p class="placeholder"><span class="ph-note">[150 words about the module]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor.</p>
+            <a class="btn" href="#" data-todo="link">View the project</a>
+          </div>
+        </div>
+        <span class="notice">Dedicated software compatibility coming soon</span>
+        <div class="box yellow contact"><div class="box-head">Get involved</div><div class="box-body">
+          <p>If you want to assist in development or maintenance, want to be a beta tester, or have questions and suggestions, reach out.</p>
+          <p class="who">Jett Winkler · FTC Team 19922 Iron Lions · <a href="mailto:Jett@wyomingwinklers.com">Jett@wyomingwinklers.com</a></p>
+        </div></div>
+      </div>
+    </section>
+
+    <!-- COMPETITION ROBOTS -->
+    <section class="panel" id="robots">
+      <div class="panel-head"><h3>Competition Robots</h3><span class="rule"></span><span class="byline">FTC Team 19922 Iron Lions</span></div>
+      <div class="panel-body robots">
+        <article class="box robot"><div class="box-head">2025–2026 DECODE</div><div class="box-body">
+          <div class="mat"><figure class="ph"><img src="images/robot-decode.jpg" alt="Iron Lions 2025–2026 DECODE robot" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/robot-decode.jpg</figcaption></figure></div>
+          <p>The 2025–2026 FIRST Tech Challenge DECODE competition robot from FTC Team 19922 Iron Lions.</p>
+          <a class="btn" href="#" data-todo="link">See the DECODE robot</a>
+        </div></article>
+        <article class="box robot"><div class="box-head">2024–2025 INTO THE DEEP</div><div class="box-body">
+          <div class="mat"><figure class="ph"><img src="images/robot-into-the-deep.jpg" alt="Iron Lions 2024–2025 INTO THE DEEP robot" loading="lazy" onerror="this.parentNode.classList.add('missing')"><figcaption class="ph-label">images/robot-into-the-deep.jpg</figcaption></figure></div>
+          <p>The 2024–2025 FIRST Tech Challenge INTO THE DEEP competition robot from FTC Team 19922 Iron Lions.</p>
+          <a class="btn" href="#" data-todo="link">See the INTO THE DEEP robot</a>
+        </div></article>
+      </div>
+    </section>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>Jett Winkler · Engineering and Arts Portfolio</span><a href="mailto:Jett@wyomingwinklers.com">Jett@wyomingwinklers.com</a></div>
+</footer>
+
+<script>
+  // Embed YouTube once a real video ID is set (works on GitHub Pages).
+  document.querySelectorAll('.video[data-youtube]').forEach(function (box) {
+    var id = box.getAttribute('data-youtube');
+    if (!id || id === 'VIDEO_ID') return;
+    box.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) +
+      '" title="Project video" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+  });
+  // Catch images that failed before the page finished parsing.
+  document.querySelectorAll('.ph img').forEach(function (img) {
+    if (img.complete && img.naturalWidth === 0) img.parentNode.classList.add('missing');
+  });
+</script>
+</body>
+</html>
