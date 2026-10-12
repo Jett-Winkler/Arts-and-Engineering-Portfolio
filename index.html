@@ -1,8 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Jett Winkler Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,11 +60,13 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--yellow); outli
 /* Cover: big name, then a dimension-line style subtitle */
 .cover { padding-block: 64px 24px; display: grid; gap: 14px; }
 .cover h1 { font-weight: 800; text-transform: uppercase; font-size: clamp(3rem, 11vw, 7rem); letter-spacing: 0.01em; line-height: 0.95; }
-.cover-line { display: flex; align-items: center; gap: 14px; font-family: var(--font-head); font-weight: 300; text-transform: uppercase; font-size: clamp(1.2rem, 3.4vw, 2rem); letter-spacing: 0.04em; }
-.cover-line span { flex: none; }
-.cover-line span:nth-child(3) { color: var(--yellow); font-weight: 700; }
-.cover-line i { flex: 1 1 20px; height: 0; border-top: 3px solid var(--panel-dark); }
-.cover-sub { font-family: var(--font-head); font-size: 1.1rem; border-top: 4px solid var(--yellow); padding-top: 10px; }
+.cover-line { font-family: var(--font-head); font-weight: 300; text-transform: uppercase; font-size: clamp(1.3rem, 3.6vw, 2.1rem); letter-spacing: 0.04em; }
+.cover-sub { border-top: 4px solid var(--yellow); padding-top: 14px; display: grid; gap: 14px; font-family: var(--font-head); font-size: 1.15rem; }
+.toc ul { list-style: none; margin: 6px 0 0; padding: 0 0 0 16px; border-left: 2px solid var(--ink); display: grid; gap: 4px; }
+.toc ul ul { border-left-color: var(--yellow); margin-bottom: 6px; }
+.toc > ul > li > a { font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
+.toc a { text-decoration: none; }
+.toc a:hover { text-decoration: underline; text-decoration-color: var(--yellow); background: none; }
 
 /* Chapter title: boxed title between double yellow rules */
 .chapter { padding-block: 48px 8px; display: grid; gap: 36px; }
@@ -203,21 +201,40 @@ details .inner { padding: 14px 16px; }
 footer { margin-top: 56px; }
 footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; font-family: var(--font-head); }
 </style>
-</head>
-<body>
 
 <header class="runhead">
   <div class="wrap">
     <span class="title">Jett Winkler · Engineering and Arts Portfolio</span>
-    <nav aria-label="Sections"><a href="#art">Art</a><a href="#engineering">Engineering</a></nav>
   </div>
 </header>
 
 <main>
   <section class="cover wrap">
     <h1>Jett Winkler</h1>
-    <div class="cover-line"><span>Engineering</span><i></i><span>&amp;</span><i></i><span>Arts</span></div>
-    <p class="cover-sub">Portfolio · <a href="mailto:Jett@wyomingwinklers.com">Jett@wyomingwinklers.com</a></p>
+    <p class="cover-line">Engineering and Arts Portfolio</p>
+    <div class="cover-sub">
+      <p class="contact-info"><strong>Contact Info:</strong> <a href="mailto:Jett@wyomingwinklers.com">Jett@wyomingwinklers.com</a>, <a href="tel:+18015549343">+1 (801) 554-9343</a></p>
+      <nav class="toc" aria-label="Contents">
+        <strong>Contents:</strong>
+        <ul>
+          <li><a href="#art">Art</a>
+            <ul>
+              <li><a href="#ceramics">Ceramics</a></li>
+              <li><a href="#meal-1">Culinary arts</a></li>
+              <li><a href="#two-d">2D art</a></li>
+            </ul>
+          </li>
+          <li><a href="#engineering">Engineering</a>
+            <ul>
+              <li><a href="#research">Advanced Research Computer Science and Mathematics: research on differential swerve drive</a></li>
+              <li><a href="#fusion-library">goBILDA FTC Fusion Parts Library</a></li>
+              <li><a href="#coaxial-swerve">FTC Compatible open source coaxial swerve drive</a></li>
+              <li><a href="#robots">Competition robots</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </section>
 
   <!-- ===================== ART ===================== -->
@@ -455,5 +472,5 @@ footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; di
     if (img.complete && img.naturalWidth === 0) img.parentNode.classList.add('missing');
   });
 </script>
-</body>
-</html>
+
+</body></html>
