@@ -219,6 +219,38 @@ footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; di
 .ph.reel { aspect-ratio: 380 / 520; border-radius: 12px; }
 .ph.reel .ph-label { border-radius: 12px; font-size: 0.85rem; }
 @media (max-width: 760px) { .media-grid { grid-template-columns: 1fr; } }
+/* Featured ceramics piece spans the full width */
+.ceramics .featured { grid-column: 1 / -1; }
+.ceramics .featured .trio { gap: 12px; }
+.ceramics .featured .ph { aspect-ratio: 4 / 3; border-radius: 14px; }
+.ceramics .featured .ph .ph-label { border-radius: 14px; font-size: 0.95rem; }
+.ceramics .featured .box-head { font-size: 1.6rem; background: var(--yellow); }
+.ceramics .featured p { font-size: 1.2rem; max-width: 70ch; }
+
+/* Research poster inside the dropdown */
+.ph.poster { aspect-ratio: auto; min-height: 240px; border-radius: 6px; }
+.ph.poster img { height: auto; object-fit: contain; }
+.ph.poster .ph-label { border-radius: 6px; }
+
+/* Swerve: phone-shaped vertical video with three images stacked to its right */
+.swerve-media { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 22px; align-items: stretch; }
+.phone-col { display: grid; gap: 10px; align-content: start; justify-items: center; }
+.phone { width: 100%; max-width: 300px; background: #111111; border-radius: 44px; padding: 12px; position: relative; box-shadow: 0 0 0 2px #444444 inset; }
+.phone::before { content: ""; position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 84px; height: 22px; border-radius: 999px; background: #000000; z-index: 2; }
+.phone-screen { aspect-ratio: 9 / 16; border-radius: 34px; border: 0; background: #2a2a2a; overflow: hidden; }
+.phone-screen .ph-label { color: #dddddd; text-decoration: none; }
+.phone-screen .ph-label:hover { background: none; text-decoration: underline; }
+.watch { font-family: var(--font-head); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.95rem; }
+.swerve-stack { display: grid; grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 14px; min-height: 0; }
+.swerve-stack .ph { aspect-ratio: auto; height: 100%; min-height: 150px; }
+@media (max-width: 700px) {
+  .swerve-media { grid-template-columns: 1fr; }
+  .swerve-stack { grid-template-rows: none; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .swerve-stack .ph { aspect-ratio: 1; min-height: 0; border-radius: 10px; }
+  .swerve-stack .ph .ph-label { border-radius: 10px; font-size: 0.75rem; }
+}
+
+/* Two-across ceramics drop to one column on phones (featured already full width) */
 </style>
 </head>
 <body>
@@ -261,6 +293,7 @@ footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; di
               <li><a href="#fusion-library">goBILDA FTC Fusion Parts Library</a></li>
               <li><a href="#coaxial-swerve">FTC Compatible open source coaxial swerve drive</a></li>
               <li><a href="#media">Robotics media footprint</a></li>
+              <li><a href="#media">Robotics media footprint</a></li>
               <li><a href="#robots">Competition robots</a></li>
             </ul>
           </li>
@@ -278,7 +311,7 @@ footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; di
       <div class="panel-head"><h3>Recent Sets</h3><span class="rule"></span><span class="byline">Ceramics</span></div>
       <div class="panel-body ceramics">
 
-        <article class="box">
+        <article class="box featured">
           <div class="box-head">Black and Red Etched Underglaze Conical Serving Bowl</div>
           <div class="box-body">
             <div class="trio">
@@ -291,38 +324,26 @@ footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; di
         </article>
 
         <article class="box">
-          <div class="box-head">Conical Large Soup Bowl</div>
-          <div class="box-body">
-            <div class="trio">
-              <figure class="ph"><img src="images/ceramics-2a.jpg" data-base="images/ceramics-2a" alt="Conical Large Soup Bowl, view 1" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/ceramics-2a.jpg</figcaption></figure>
-              <figure class="ph"><img src="images/ceramics-2b.jpg" data-base="images/ceramics-2b" alt="Conical Large Soup Bowl, view 2" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/ceramics-2b.jpg</figcaption></figure>
-              <figure class="ph"><img src="images/ceramics-2c.jpg" data-base="images/ceramics-2c" alt="Conical Large Soup Bowl, view 3" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/ceramics-2c.jpg</figcaption></figure>
-            </div>
-            <p class="placeholder"><span class="ph-note">[50 words about this piece]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</p>
-          </div>
-        </article>
-
-        <article class="box">
-          <div class="box-head">Low Black Coupe Plate</div>
-          <div class="box-body">
-            <div class="trio">
-              <figure class="ph"><img src="images/ceramics-3a.jpg" data-base="images/ceramics-3a" alt="Low Black Coupe Plate, view 1" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/ceramics-3a.jpg</figcaption></figure>
-              <figure class="ph"><img src="images/ceramics-3b.jpg" data-base="images/ceramics-3b" alt="Low Black Coupe Plate, view 2" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/ceramics-3b.jpg</figcaption></figure>
-              <figure class="ph"><img src="images/ceramics-3c.jpg" data-base="images/ceramics-3c" alt="Low Black Coupe Plate, view 3" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/ceramics-3c.jpg</figcaption></figure>
-            </div>
-            <p>This plate is meant to take almost no attention away from the food on it. It sits low to the table, with an understated form and color.</p>
-          </div>
-        </article>
-
-        <article class="box">
           <div class="box-head">Low Blue and Brown Coupe Plate</div>
           <div class="box-body">
             <div class="trio">
-              <figure class="ph"><img src="images/ceramics-4a.jpg" data-base="images/ceramics-4a" alt="Low Blue and Brown Coupe Plate, view 1" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/ceramics-4a.jpg</figcaption></figure>
-              <figure class="ph"><img src="images/ceramics-4b.jpg" data-base="images/ceramics-4b" alt="Low Blue and Brown Coupe Plate, view 2" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/ceramics-4b.jpg</figcaption></figure>
-              <figure class="ph"><img src="images/ceramics-4c.jpg" data-base="images/ceramics-4c" alt="Low Blue and Brown Coupe Plate, view 3" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/ceramics-4c.jpg</figcaption></figure>
+              <figure class="ph"><img src="images/ceramics-2a.jpg" data-base="images/ceramics-2a" alt="Low Blue and Brown Coupe Plate, view 1" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/ceramics-2a.jpg</figcaption></figure>
+              <figure class="ph"><img src="images/ceramics-2b.jpg" data-base="images/ceramics-2b" alt="Low Blue and Brown Coupe Plate, view 2" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/ceramics-2b.jpg</figcaption></figure>
+              <figure class="ph"><img src="images/ceramics-2c.jpg" data-base="images/ceramics-2c" alt="Low Blue and Brown Coupe Plate, view 3" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/ceramics-2c.jpg</figcaption></figure>
             </div>
             <p class="placeholder"><span class="ph-note">[50 words about this piece]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</p>
+          </div>
+        </article>
+
+        <article class="box">
+          <div class="box-head">Blue-Gray Place Setting Bowl</div>
+          <div class="box-body">
+            <div class="trio">
+              <figure class="ph"><img src="images/ceramics-3a.jpg" data-base="images/ceramics-3a" alt="Blue-Gray Place Setting Bowl, view 1" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/ceramics-3a.jpg</figcaption></figure>
+              <figure class="ph"><img src="images/ceramics-3b.jpg" data-base="images/ceramics-3b" alt="Blue-Gray Place Setting Bowl, view 2" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/ceramics-3b.jpg</figcaption></figure>
+              <figure class="ph"><img src="images/ceramics-3c.jpg" data-base="images/ceramics-3c" alt="Blue-Gray Place Setting Bowl, view 3" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/ceramics-3c.jpg</figcaption></figure>
+            </div>
+            <p>This bowl is meant to take almost no attention away from the food on it. It sits low to the table, with an understated form and color.</p>
           </div>
         </article>
       </div>
@@ -330,10 +351,10 @@ footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; di
 
     <!-- CULINARY ARTS -->
     <section class="panel" id="meal-1">
-      <div class="panel-head"><h3>Five Course Traditional Italian Meal</h3><span class="rule"></span><span class="byline">Culinary art · 5 courses</span></div>
+      <div class="panel-head"><h3>Four Course Traditional Italian Meal</h3><span class="rule"></span><span class="byline">Culinary art · 4 courses</span></div>
       <div class="panel-body meal">
         <div class="box"><div class="box-head">The meal</div><div class="box-body">
-          <p>This meal follows the traditional Italian structure of five courses, starting with shared small bites before anyone sits down and ending with dessert. Every recipe was passed down through my mother’s side of the family, and I learned most of this cuisine from my grandmother. These are the foods I grew up eating, and cooking them as a full meal let me treat each course as its own plate while keeping the whole meal connected.</p>
+          <p>This meal follows the traditional Italian progression of courses, starting with shared small bites before anyone sits down and building to the main protein. Every recipe was passed down through my mother’s side of the family, and I learned most of this cuisine from my grandmother. These are the foods I grew up eating, and cooking them as a full meal let me treat each course as its own plate while keeping the whole meal connected.</p>
         </div></div>
         <ol class="stages">
           <li class="stage"><figure class="ph"><img src="images/meal-1-1.jpg" data-base="images/meal-1-1" alt="Aperitivo – Heirloom and Pear Tomatoes with Burrata" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/meal-1-1.jpg</figcaption></figure>
@@ -344,27 +365,23 @@ footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; di
             <div><span class="tag yellow">Course 3</span><h5>Primo Piatto – Cacio e Pepe</h5><p>The primo is the pasta course and the center of the meal. Cacio e pepe, “cheese and pepper,” is bucatini in a Pecorino Romano and black pepper sauce that needs precise heat control to keep the cheese from clumping.</p></div></li>
           <li class="stage"><figure class="ph"><img src="images/meal-1-4.jpg" data-base="images/meal-1-4" alt="Secondo Piatto – Sirloin with Garlic Butter" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/meal-1-4.jpg</figcaption></figure>
             <div><span class="tag yellow">Course 4</span><h5>Secondo Piatto – Sirloin with Garlic Butter</h5><p>The secondo is the main course, built around the primary protein. This sirloin was cooked sous vide to rare at 124 °F (51 °C), then seared on a grill at about 480 °F (250 °C) and finished with garlic butter.</p></div></li>
-          <li class="stage"><figure class="ph"><img src="images/meal-1-5.jpg" data-base="images/meal-1-5" alt="Dolce – Panna Cotta" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/meal-1-5.jpg</figcaption></figure>
-            <div><span class="tag yellow">Course 5</span><h5>Dolce – Panna Cotta</h5><p>The dolce closes the meal with something sweet. Panna cotta, “cooked cream,” is sweetened cream set with gelatin until it holds its shape, served chilled as a light finish after the heavier courses.</p></div></li>
         </ol>
       </div>
     </section>
 
     <section class="panel" id="meal-2">
-      <div class="panel-head"><h3>Four Course French Brunch</h3><span class="rule"></span><span class="byline">Culinary art · 4 courses</span></div>
+      <div class="panel-head"><h3>Three Course French Brunch</h3><span class="rule"></span><span class="byline">Culinary art · 3 courses</span></div>
       <div class="panel-body meal">
         <div class="box"><div class="box-head">The meal</div><div class="box-body">
-          <p>This brunch takes a less traditional approach to French cooking, moving through four courses: a bread, a savory entrée, a sweet entrée, and a pastry. A multi-course format like this is more common in fine-dining brunch than at a typical French table. I learned most of these dishes either on my own or from my dad, so this meal reflects the cooking I have picked up at home and by teaching myself.</p>
+          <p>This brunch takes a less traditional approach to French cooking, moving through three courses: a bread, a savory entrée, and a sweet entrée. A multi-course format like this is more common in fine-dining brunch than at a typical French table. I learned most of these dishes either on my own or from my dad, so this meal reflects the cooking I have picked up at home and by teaching myself.</p>
         </div></div>
         <ol class="stages">
-          <li class="stage"><figure class="ph"><img src="images/meal-2-1.jpg" data-base="images/meal-2-1" alt="Bread – Popovers with Strawberry and Herb Butter" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/meal-2-1.jpg</figcaption></figure>
-            <div><span class="tag yellow">Course 1</span><h5>Bread – Popovers with Strawberry and Herb Butter</h5><p>The bread course starts the brunch. Popovers are tall, golden egg pastries with a crisp, hollow shell, served here with a sweet whipped strawberry butter and a savory herb butter.</p></div></li>
-          <li class="stage"><figure class="ph"><img src="images/meal-2-2.jpg" data-base="images/meal-2-2" alt="Savory Entrée – Oeufs Cocotte" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/meal-2-2.jpg</figcaption></figure>
-            <div><span class="tag yellow">Course 2</span><h5>Savory Entrée – Oeufs Cocotte</h5><p>The savory entrée is the main dish of the brunch. Oeufs cocotte are eggs baked with cream in individual ramekins set in a water bath, so the whites set while the yolks stay soft.</p></div></li>
+          <li class="stage"><figure class="ph"><img src="images/meal-2-1.jpg" data-base="images/meal-2-1" alt="Bread – Homemade Sourdough" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/meal-2-1.jpg</figcaption></figure>
+            <div><span class="tag yellow">Course 1</span><h5>Bread – Homemade Sourdough</h5><p>The bread course starts the brunch. This homemade sourdough is naturally leavened with a starter and slowly fermented, giving it a crackling crust, an open, chewy crumb, and a mild tang.</p></div></li>
+          <li class="stage"><figure class="ph"><img src="images/meal-2-2.jpg" data-base="images/meal-2-2" alt="Savory Entrée – Spinach and Tomato Quiche" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/meal-2-2.jpg</figcaption></figure>
+            <div><span class="tag yellow">Course 2</span><h5>Savory Entrée – Spinach and Tomato Quiche</h5><p>The savory entrée is the main dish of the brunch. This quiche is a flaky pastry crust filled with a rich egg custard, fresh spinach, and tomato, baked until the center is just set.</p></div></li>
           <li class="stage"><figure class="ph"><img src="images/meal-2-3.jpg" data-base="images/meal-2-3" alt="Sweet Entrée – Crêpe au Nutella" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/meal-2-3.jpg</figcaption></figure>
             <div><span class="tag yellow">Course 3</span><h5>Sweet Entrée – Crêpe au Nutella</h5><p>The sweet entrée balances the savory course. This Nutella crêpe, topped with fresh strawberries and powdered sugar, is a dish my dad taught me to make, and one I still make the way he showed me.</p></div></li>
-          <li class="stage"><figure class="ph"><img src="images/meal-2-4.jpg" data-base="images/meal-2-4" alt="Pastry – Strawberry Tart" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/meal-2-4.jpg</figcaption></figure>
-            <div><span class="tag yellow">Course 4</span><h5>Pastry – Strawberry Tart</h5><p>The pastry course ends the brunch. This strawberry tart is a crisp, buttery shell filled with smooth pastry cream and topped with fresh strawberries, a classic of French pâtisserie.</p></div></li>
         </ol>
       </div>
     </section>
@@ -380,8 +397,6 @@ footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; di
           <figure><div class="ph card"><img src="images/2d-1.jpg" data-base="images/2d-1" alt="Gears and Gadgets card 1" loading="lazy" onerror="imgFail(this)"><span class="ph-label">images/2d-1.jpg</span></div><figcaption class="placeholder"><span class="ph-note">[15-word caption]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.</figcaption></figure>
           <figure><div class="ph card"><img src="images/2d-2.jpg" data-base="images/2d-2" alt="Gears and Gadgets card 2" loading="lazy" onerror="imgFail(this)"><span class="ph-label">images/2d-2.jpg</span></div><figcaption class="placeholder"><span class="ph-note">[15-word caption]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.</figcaption></figure>
           <figure><div class="ph card"><img src="images/2d-3.jpg" data-base="images/2d-3" alt="Gears and Gadgets card 3" loading="lazy" onerror="imgFail(this)"><span class="ph-label">images/2d-3.jpg</span></div><figcaption class="placeholder"><span class="ph-note">[15-word caption]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.</figcaption></figure>
-          <figure><div class="ph card"><img src="images/2d-4.jpg" data-base="images/2d-4" alt="Gears and Gadgets card 4" loading="lazy" onerror="imgFail(this)"><span class="ph-label">images/2d-4.jpg</span></div><figcaption class="placeholder"><span class="ph-note">[15-word caption]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.</figcaption></figure>
-          <figure><div class="ph card"><img src="images/2d-5.jpg" data-base="images/2d-5" alt="Gears and Gadgets card 5" loading="lazy" onerror="imgFail(this)"><span class="ph-label">images/2d-5.jpg</span></div><figcaption class="placeholder"><span class="ph-note">[15-word caption]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.</figcaption></figure>
         </div>
       </div>
     </section>
@@ -402,7 +417,7 @@ footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; di
         <details>
           <summary>Click here for more info</summary>
           <div class="inner">
-            <p class="placeholder"><span class="ph-note">[350 words of additional research detail]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum lorem ipsum dolor sit amet.</p>
+            <figure class="ph poster"><img src="images/ARCS-Poster.jpg" data-base="images/ARCS-Poster" alt="Advanced research poster: CVT differential swerve drive simulation study" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/ARCS-Poster.jpg</figcaption></figure>
           </div>
         </details>
       </div>
@@ -414,7 +429,7 @@ footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; di
       <div class="panel-body">
         <div class="split">
           <div class="box"><div class="box-head">About the library</div><div class="box-body">
-            <p>This library is an export of every part from goBILDA, the primary parts supplier for FTC. The parts come as STEP files, the most common CAD format, which opens in nearly every CAD program. The GitHub repository has the current library and the download script I wrote to build it, in two versions. The unsorted library downloads each part as a STEP file named by its SKU. The sorted version renames each file as “part name [SKU]” using data from a web scraper.</p>
+            <p>This library is an export of every part from goBILDA, the primary parts supplier for FTC. The parts come as STEP files, the most common CAD format, which opens in nearly every CAD program. It comes in two versions. The unsorted library has each part as a STEP file named by its SKU. The sorted version renames each file as “part name [SKU]” using data from a web scraper. The scripts I wrote to download the parts from goBILDA, unzip them, and upload them to Fusion 360 are also available.</p>
           </div></div>
           <div class="box yellow contact"><div class="box-head">Get involved</div><div class="box-body">
             <p>If you want to assist in development or maintenance, or have questions and suggestions, reach out.</p>
@@ -423,7 +438,9 @@ footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; di
         </div>
         <div class="box"><div class="box-head">Downloads</div><div class="box-body linkgroups-one">
           <ul class="dl">
-            <li><a href="https://github.com/Jett-Winkler/goBILDA-parts-library">Library downloads and file export scripts (GitHub)</a></li>
+            <li><a href="https://github.com/Jett-Winkler/goBILDA-unorginized-parts-library">Unsorted parts library, named by SKU (GitHub)</a></li>
+            <li><a href="https://github.com/Jett-Winkler/GoBILDA-Organized-Parts-Library">Sorted and renamed parts library (GitHub)</a></li>
+            <li><a href="https://github.com/Jett-Winkler/GoBILDA-Download-and-Fusion-360-Upload-Scripts">Download, unzip, and Fusion 360 upload scripts (GitHub)</a></li>
             <li class="soon">Processed and adjusted Fusion native file download (COMING SOON)</li>
           </ul>
         </div></div>
@@ -434,17 +451,21 @@ footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; di
     <section class="panel" id="coaxial-swerve">
       <div class="panel-head"><h3>FTC Compatible Coaxial Swerve Drive</h3><span class="rule"></span><span class="byline">Open source design</span></div>
       <div class="panel-body">
-        <!-- YOUTUBE: replace VIDEO_ID below with the ID from your video's link (the part after watch?v=) -->
-        <div class="video" data-youtube="VIDEO_ID"><div class="ph-label">YouTube video goes here. Set data-youtube to the video ID.</div></div>
-        <div class="trio">
-          <figure class="ph"><img src="images/swerve-1.jpg" data-base="images/swerve-1" alt="Coaxial swerve module, image 1" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/swerve-1.jpg</figcaption></figure>
-          <figure class="ph"><img src="images/swerve-2.jpg" data-base="images/swerve-2" alt="Coaxial swerve module, image 2" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/swerve-2.jpg</figcaption></figure>
-          <figure class="ph"><img src="images/swerve-3.jpg" data-base="images/swerve-3" alt="Coaxial swerve module, image 3" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/swerve-3.jpg</figcaption></figure>
+        <div class="swerve-media">
+          <div class="phone-col">
+            <div class="phone"><div class="phone-screen video" data-youtube="A4b2F3dWoSQ"><a class="ph-label" href="https://youtube.com/shorts/A4b2F3dWoSQ">Watch the module video on YouTube</a></div></div>
+            <a class="watch" href="https://youtube.com/shorts/A4b2F3dWoSQ">Open on YouTube</a>
+          </div>
+          <div class="swerve-stack">
+            <figure class="ph"><img src="images/swerve-1.jpg" data-base="images/swerve-1" alt="Coaxial swerve module, image 1" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/swerve-1.jpg</figcaption></figure>
+            <figure class="ph"><img src="images/swerve-2.jpg" data-base="images/swerve-2" alt="Coaxial swerve module, image 2" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/swerve-2.jpg</figcaption></figure>
+            <figure class="ph"><img src="images/swerve-3.jpg" data-base="images/swerve-3" alt="Coaxial swerve module, image 3" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/swerve-3.jpg</figcaption></figure>
+          </div>
         </div>
         <div class="panel-dark">
           <div class="tag-box"><span>About the module</span></div>
           <div style="display:grid;gap:18px">
-            <p class="placeholder"><span class="ph-note">[150 words about the module]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor.</p>
+            <p>This is a coaxial swerve drive module built entirely around the goBILDA parts system, so teams can build it from parts they likely already own or can easily order. Each module steers and drives its wheel independently, giving the robot full holonomic movement in any direction while keeping its heading. The design is modular. A matching mecanum module takes up the exact same space and uses the same mounting points, so if a team runs into problems with swerve, it can temporarily swap back to mecanum without redesigning the chassis, then return to swerve once the issue is solved. That makes swerve a much lower-risk upgrade for teams trying it for the first time.</p>
             <a class="btn" href="#" data-todo="link">View the project</a>
           </div>
         </div>
