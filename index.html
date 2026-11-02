@@ -235,11 +235,8 @@ footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; di
 /* Swerve: phone-shaped vertical video with three images stacked to its right */
 .swerve-media { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 22px; align-items: stretch; }
 .phone-col { display: grid; gap: 10px; align-content: start; justify-items: center; }
-.phone { width: 100%; max-width: 300px; background: #111111; border-radius: 44px; padding: 12px; position: relative; box-shadow: 0 0 0 2px #444444 inset; }
-.phone::before { content: ""; position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 84px; height: 22px; border-radius: 999px; background: #000000; z-index: 2; }
-.phone-screen { aspect-ratio: 9 / 16; border-radius: 34px; border: 0; background: #2a2a2a; overflow: hidden; }
-.phone-screen .ph-label { color: #dddddd; text-decoration: none; }
-.phone-screen .ph-label:hover { background: none; text-decoration: underline; }
+.vertical-video { width: 100%; max-width: 300px; aspect-ratio: 9 / 16; border-radius: 18px; }
+.vertical-video .ph-label { text-decoration: none; }
 .watch { font-family: var(--font-head); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.95rem; }
 .swerve-stack { display: grid; grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 14px; min-height: 0; }
 .swerve-stack .ph { aspect-ratio: auto; height: 100%; min-height: 150px; }
@@ -250,7 +247,15 @@ footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; di
   .swerve-stack .ph .ph-label { border-radius: 10px; font-size: 0.75rem; }
 }
 
-/* Two-across ceramics drop to one column on phones (featured already full width) */
+/* Pieces 2 and 3: one large photo each */
+.ceramics .solo .ph { aspect-ratio: 4 / 3; border-radius: 14px; }
+.ceramics .solo .ph .ph-label { border-radius: 14px; font-size: 0.95rem; }
+
+/* Card game: three large cards */
+.cards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.cards figure { padding: 10px; gap: 10px; }
+.cards figcaption { font-size: 1.05rem; }
+@media (max-width: 560px) { .cards { grid-template-columns: minmax(0, 340px); justify-content: center; } }
 </style>
 </head>
 <body>
@@ -294,6 +299,7 @@ footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; di
               <li><a href="#coaxial-swerve">FTC Compatible open source coaxial swerve drive</a></li>
               <li><a href="#media">Robotics media footprint</a></li>
               <li><a href="#media">Robotics media footprint</a></li>
+              <li><a href="#media">Robotics media footprint</a></li>
               <li><a href="#robots">Competition robots</a></li>
             </ul>
           </li>
@@ -326,10 +332,8 @@ footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; di
         <article class="box">
           <div class="box-head">Low Blue and Brown Coupe Plate</div>
           <div class="box-body">
-            <div class="trio">
+            <div class="solo">
               <figure class="ph"><img src="images/ceramics-2a.jpg" data-base="images/ceramics-2a" alt="Low Blue and Brown Coupe Plate, view 1" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/ceramics-2a.jpg</figcaption></figure>
-              <figure class="ph"><img src="images/ceramics-2b.jpg" data-base="images/ceramics-2b" alt="Low Blue and Brown Coupe Plate, view 2" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/ceramics-2b.jpg</figcaption></figure>
-              <figure class="ph"><img src="images/ceramics-2c.jpg" data-base="images/ceramics-2c" alt="Low Blue and Brown Coupe Plate, view 3" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/ceramics-2c.jpg</figcaption></figure>
             </div>
             <p class="placeholder"><span class="ph-note">[50 words about this piece]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</p>
           </div>
@@ -338,10 +342,8 @@ footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; di
         <article class="box">
           <div class="box-head">Blue-Gray Place Setting Bowl</div>
           <div class="box-body">
-            <div class="trio">
+            <div class="solo">
               <figure class="ph"><img src="images/ceramics-3a.jpg" data-base="images/ceramics-3a" alt="Blue-Gray Place Setting Bowl, view 1" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/ceramics-3a.jpg</figcaption></figure>
-              <figure class="ph"><img src="images/ceramics-3b.jpg" data-base="images/ceramics-3b" alt="Blue-Gray Place Setting Bowl, view 2" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/ceramics-3b.jpg</figcaption></figure>
-              <figure class="ph"><img src="images/ceramics-3c.jpg" data-base="images/ceramics-3c" alt="Blue-Gray Place Setting Bowl, view 3" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/ceramics-3c.jpg</figcaption></figure>
             </div>
             <p>This bowl is meant to take almost no attention away from the food on it. It sits low to the table, with an understated form and color.</p>
           </div>
@@ -453,7 +455,7 @@ footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; di
       <div class="panel-body">
         <div class="swerve-media">
           <div class="phone-col">
-            <div class="phone"><div class="phone-screen video" data-youtube="A4b2F3dWoSQ"><a class="ph-label" href="https://youtube.com/shorts/A4b2F3dWoSQ">Watch the module video on YouTube</a></div></div>
+            <div class="vertical-video video" data-youtube="A4b2F3dWoSQ"><a class="ph-label" href="https://youtube.com/shorts/A4b2F3dWoSQ">Watch the module video on YouTube</a></div>
             <a class="watch" href="https://youtube.com/shorts/A4b2F3dWoSQ">Open on YouTube</a>
           </div>
           <div class="swerve-stack">
