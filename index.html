@@ -211,8 +211,8 @@ footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; di
 .dl li::before { content: ""; width: 7px; height: 7px; background: var(--yellow); border: 1px solid var(--line); flex: none; transform: translateY(-1px); }
 
 /* Media footprint: dashboard screenshot beside a 2x2 grid of reel covers */
-.media-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 22px; align-items: start; }
-.media-dash, .media-reels { display: grid; gap: 10px; background: var(--page); border: 1.5px solid var(--line); padding: 12px; min-width: 0; }
+.media-grid { display: grid; grid-template-columns: minmax(0, 1.23fr) minmax(0, 1fr); gap: 22px; align-items: stretch; }
+.media-dash, .media-reels { display: grid; gap: 10px; align-content: start; background: var(--page); border: 1.5px solid var(--line); padding: 12px; min-width: 0; }
 .ph.dash { aspect-ratio: 1206 / 1317; border-radius: 12px; }
 .ph.dash .ph-label { border-radius: 12px; }
 .reel-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
@@ -225,25 +225,26 @@ footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; di
 .ceramics .featured .ph { aspect-ratio: 4 / 3; border-radius: 14px; }
 .ceramics .featured .ph .ph-label { border-radius: 14px; font-size: 0.95rem; }
 .ceramics .featured .box-head { font-size: 1.6rem; background: var(--yellow); }
-.ceramics .featured p { font-size: 1.2rem; max-width: 70ch; }
+.ceramics .featured p { font-size: 1.2rem; max-width: none; }
 
 /* Research poster inside the dropdown */
 .ph.poster { aspect-ratio: auto; min-height: 240px; border-radius: 6px; }
 .ph.poster img { height: auto; object-fit: contain; }
 .ph.poster .ph-label { border-radius: 6px; }
 
-/* Swerve: phone-shaped vertical video with three images stacked to its right */
-.swerve-media { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 22px; align-items: stretch; }
-.phone-col { display: grid; gap: 10px; align-content: start; justify-items: center; }
-.vertical-video { width: 100%; max-width: 300px; aspect-ratio: 9 / 16; border-radius: 18px; }
+/* Swerve: vertical 9:16 video; the three renders stack beside it and end exactly where it ends */
+.swerve-media { display: grid; grid-template-columns: minmax(0, 400px) minmax(0, 1fr); gap: 18px; align-items: stretch; }
+.vertical-video { width: 100%; aspect-ratio: 9 / 16; border-radius: 18px; }
 .vertical-video .ph-label { text-decoration: none; }
-.watch { font-family: var(--font-head); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.95rem; }
+.watch { justify-self: start; font-family: var(--font-head); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.95rem; }
 .swerve-stack { display: grid; grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 14px; min-height: 0; }
-.swerve-stack .ph { aspect-ratio: auto; height: 100%; min-height: 150px; }
-@media (max-width: 700px) {
-  .swerve-media { grid-template-columns: 1fr; }
+.swerve-stack .ph { aspect-ratio: auto; height: auto; min-height: 0; position: relative; }
+.swerve-stack .ph img { position: absolute; inset: 0; }
+@media (max-width: 760px) {
+  .swerve-media { grid-template-columns: minmax(0, 1fr); }
+  .vertical-video { max-width: 360px; justify-self: center; }
   .swerve-stack { grid-template-rows: none; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-  .swerve-stack .ph { aspect-ratio: 1; min-height: 0; border-radius: 10px; }
+  .swerve-stack .ph { aspect-ratio: 1; border-radius: 10px; }
   .swerve-stack .ph .ph-label { border-radius: 10px; font-size: 0.75rem; }
 }
 
@@ -335,7 +336,7 @@ footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; di
             <div class="solo">
               <figure class="ph"><img src="images/ceramics-2a.jpg" data-base="images/ceramics-2a" alt="Low Blue and Brown Coupe Plate, view 1" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/ceramics-2a.jpg</figcaption></figure>
             </div>
-            <p class="placeholder"><span class="ph-note">[50 words about this piece]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</p>
+            <p>This plate was made by layering a deep blue glaze with Turkis Amber brushed on top in uneven strokes. The result is an uneven brown to dark brown surface with unpredictable spots where the blue comes through. The plate is very flat, with a slightly depressed outer edge that holds sauces, like the groove on a steak cutting board. It is part of a set that complements a matching set of similarly shaped, all-black plates that draw much less attention.</p>
           </div>
         </article>
 
@@ -396,9 +397,9 @@ footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; di
           <p>This is an FTC robotics-themed card game that I developed, illustrated, and produced to help fund my robotics team and support our outreach. Every card in the game is based on a real part or design my team has built since we started. I drew the majority of the cards myself.</p>
         </div></div>
         <div class="cards">
-          <figure><div class="ph card"><img src="images/2d-1.jpg" data-base="images/2d-1" alt="Gears and Gadgets card 1" loading="lazy" onerror="imgFail(this)"><span class="ph-label">images/2d-1.jpg</span></div><figcaption class="placeholder"><span class="ph-note">[15-word caption]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.</figcaption></figure>
-          <figure><div class="ph card"><img src="images/2d-2.jpg" data-base="images/2d-2" alt="Gears and Gadgets card 2" loading="lazy" onerror="imgFail(this)"><span class="ph-label">images/2d-2.jpg</span></div><figcaption class="placeholder"><span class="ph-note">[15-word caption]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.</figcaption></figure>
-          <figure><div class="ph card"><img src="images/2d-3.jpg" data-base="images/2d-3" alt="Gears and Gadgets card 3" loading="lazy" onerror="imgFail(this)"><span class="ph-label">images/2d-3.jpg</span></div><figcaption class="placeholder"><span class="ph-note">[15-word caption]</span> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore.</figcaption></figure>
+          <figure><div class="ph card"><img src="images/2d-1.jpg" data-base="images/2d-1" alt="Gears and Gadgets Hooded Flywheel Launcher card" loading="lazy" onerror="imgFail(this)"><span class="ph-label">images/2d-1.jpg</span></div><figcaption><strong>Hooded Flywheel Launcher</strong> – This is a robot element card.</figcaption></figure>
+          <figure><div class="ph card"><img src="images/2d-2.jpg" data-base="images/2d-2" alt="Gears and Gadgets Wheel card" loading="lazy" onerror="imgFail(this)"><span class="ph-label">images/2d-2.jpg</span></div><figcaption><strong>Wheel</strong> – This is a robot component card.</figcaption></figure>
+          <figure><div class="ph card"><img src="images/2d-3.jpg" data-base="images/2d-3" alt="Gears and Gadgets Motor card" loading="lazy" onerror="imgFail(this)"><span class="ph-label">images/2d-3.jpg</span></div><figcaption><strong>Motor</strong> – This is a robot component card.</figcaption></figure>
         </div>
       </div>
     </section>
@@ -454,16 +455,14 @@ footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; di
       <div class="panel-head"><h3>FTC Compatible Coaxial Swerve Drive</h3><span class="rule"></span><span class="byline">Open source design</span></div>
       <div class="panel-body">
         <div class="swerve-media">
-          <div class="phone-col">
-            <div class="vertical-video video" data-youtube="A4b2F3dWoSQ"><a class="ph-label" href="https://youtube.com/shorts/A4b2F3dWoSQ">Watch the module video on YouTube</a></div>
-            <a class="watch" href="https://youtube.com/shorts/A4b2F3dWoSQ">Open on YouTube</a>
-          </div>
+          <div class="vertical-video video" data-youtube="A4b2F3dWoSQ"><a class="ph-label" href="https://youtube.com/shorts/A4b2F3dWoSQ">Watch the module video on YouTube</a></div>
           <div class="swerve-stack">
             <figure class="ph"><img src="images/swerve-1.jpg" data-base="images/swerve-1" alt="Coaxial swerve module, image 1" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/swerve-1.jpg</figcaption></figure>
             <figure class="ph"><img src="images/swerve-2.jpg" data-base="images/swerve-2" alt="Coaxial swerve module, image 2" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/swerve-2.jpg</figcaption></figure>
             <figure class="ph"><img src="images/swerve-3.jpg" data-base="images/swerve-3" alt="Coaxial swerve module, image 3" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/swerve-3.jpg</figcaption></figure>
           </div>
         </div>
+        <a class="watch" href="https://youtube.com/shorts/A4b2F3dWoSQ">Open the module video on YouTube</a>
         <div class="panel-dark">
           <div class="tag-box"><span>About the module</span></div>
           <div style="display:grid;gap:18px">
@@ -485,7 +484,7 @@ footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; di
       <div class="panel-body">
         <div class="box"><div class="box-head">Educational reels</div><div class="box-body">
           <p>For the past three years I have posted educational robotics reels that have gained tens of thousands of views, many of them built around parts of my advanced research projects.</p>
-          <a class="btn" href="#" data-todo="link">See the reels</a>
+          <a class="btn" href="https://www.instagram.com/rh_iron_lions/">See the reels</a>
         </div></div>
         <div class="media-grid">
           <div class="media-dash">
@@ -517,7 +516,7 @@ footer .wrap { border-top: 3px solid var(--yellow); padding-block: 14px 40px; di
         <article class="box robot"><div class="box-head">2024–2025 INTO THE DEEP</div><div class="box-body">
           <div class="mat"><figure class="ph"><img src="images/robot-into-the-deep.jpg" data-base="images/robot-into-the-deep" alt="Iron Lions 2024–2025 INTO THE DEEP robot" loading="lazy" onerror="imgFail(this)"><figcaption class="ph-label">images/robot-into-the-deep.jpg</figcaption></figure></div>
           <p>The 2024–2025 FIRST Tech Challenge INTO THE DEEP competition robot from FTC Team 19922 Iron Lions.</p>
-          <a class="btn" href="#" data-todo="link">See the INTO THE DEEP robot</a>
+          <a class="btn" href="https://cad.onshape.com/documents/b57bea70ca04cc183ece91a8/w/7674e0eacb02016be1622875/e/1cbffd0313dff34fc50a1bfb">See the INTO THE DEEP robot (Onshape CAD)</a>
         </div></article>
       </div>
     </section>
